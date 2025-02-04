@@ -1,0 +1,33 @@
+<header class="header">
+    <div class="container header-container">
+      <a href="/" class="logo">AGWS</a>
+      <button class="menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav">
+        <ul>
+          <li><a href="/stockage">Stockage</a></li>
+          <li><a href="/outils">Outils</a></li>
+          <li><a href="/domaine">Domaine</a></li>
+          <li><a href="/web">Web</a></li>
+          <li><a href="/ecommerce">E-commerce</a></li>
+          <li><a href="/solutions">Solutions</a></li>
+          <li><a href="/about">A propos</a></li>
+          <li class="cta-button"><a href="/contact">Commencer</a></li>
+        </ul>
+      </nav>
+    </div>
+</header>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  
+  menuToggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+  menuToggle.classList.toggle('active');
+  
+  });
+</script>
