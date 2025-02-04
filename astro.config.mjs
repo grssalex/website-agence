@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://github.com/grssalex/website-agence.git",
-  base: "/website-agence/", //
+  site: "https://grssalex.github.io/website-agence/",
+  base: "/website-agence/", 
   output: "static",
 });

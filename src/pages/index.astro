@@ -1,14 +1,15 @@
 ---
 import Header from '../components/header.astro';
 import Footer from '../components/footer.astro';
+import "../style/global.css";
 ---
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AGWS - Accueil</title>
-    <link rel="stylesheet" href="/src/style/global.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{import.meta.env.BASE_URL}styles/global.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <Header />
