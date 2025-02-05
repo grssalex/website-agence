@@ -126,57 +126,61 @@ body {
 
 @media (max-width: 768px) {
   .header-container {
-    flex-direction: row;  /* Keep horizontal layout */
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-  }
-
-  .logo {
-    margin: 0;  /* Remove any margin */
-  }
-
-  .menu-toggle {
-    margin-left: auto;  /* Push to right */
   }
 
   .nav {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 250px; /* Reduced from 100% */
-    height: auto; /* Changed from 100vh */
+    width: 100%; /* Largeur complète */
+    height: 100vh; /* Hauteur complète */
     background-color: var(--primary-color);
-    padding: 60px 20px; /* Reduced padding */
+    padding: 80px 20px;
     transition: 0.3s ease-in-out;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    display: flex; /* Ajout */
+    justify-content: center; /* Ajout */
+    align-items: center; /* Ajout */
   }
 
   .nav.active {
     right: 0;
-    display: block;
+    left: 0; /* Ajout */
   }
 
   .nav ul {
     flex-direction: column;
     align-items: center;
-    gap: 1rem; /* Reduced from 2rem */
+    gap: 2rem;
+    width: 100%; /* Ajout */
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav ul li {
+    width: 100%; /* Ajout */
+    text-align: center;
   }
 
   .nav ul li a {
-    padding: 0.5rem 1rem;
+    font-size: 1.2rem; /* Plus grand sur mobile */
+    padding: 1rem;
     display: block;
     width: 100%;
-    text-align: center;
   }
 
   .menu-toggle {
     display: flex;
-    z-index: 100;
+    z-index: 1000; /* Augmenté pour être au-dessus du menu */
   }
 
+  /* Animation du menu burger */
   .menu-toggle.active span:first-child {
     transform: rotate(45deg) translate(6px, 6px);
+    background-color: var(--text-color);
   }
 
   .menu-toggle.active span:nth-child(2) {
@@ -185,6 +189,7 @@ body {
 
   .menu-toggle.active span:last-child {
     transform: rotate(-45deg) translate(6px, -6px);
+    background-color: var(--text-color);
   }
 }
 
