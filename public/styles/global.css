@@ -19,12 +19,14 @@ body {
 
 /* Header */
 .header {
-  background-color: var(--primary-color);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: var(--primary-color);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.5rem 0; /* Réduit de 1rem à 0.5rem */
-  position: sticky;
-  top: 0;
-  z-index: 100;
 }
 .header-container {
   display: flex;
@@ -93,7 +95,7 @@ body {
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .menu-toggle span {
@@ -117,6 +119,13 @@ body {
   padding: 0;
 }
 
+.nav ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
 /* Responsive navigation */
 @media (max-width: 1024px) {
   .nav ul {
@@ -135,46 +144,56 @@ body {
   .nav {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 100%; /* Largeur complète */
-    height: 100vh; /* Hauteur complète */
+    left: -100%; /* Changé de right à left */
+    width: 100vw; /* Utilisez 100vw au lieu de 80% */
+    height: 100vh;
     background-color: var(--primary-color);
-    padding: 80px 20px;
+    padding-top: 60px;
     transition: 0.3s ease-in-out;
-    display: flex; /* Ajout */
-    justify-content: center; /* Ajout */
-    align-items: center; /* Ajout */
+    z-index: 99;
+    display: none;
   }
 
   .nav.active {
-    right: 0;
-    left: 0; /* Ajout */
+    left: 0; /* Changé de right à left */
+    display: block; /* Changé de block à flex */
+    width: 100vw; /* Force la largeur totale */
+    max-width: none; /* Retire la largeur maximale */
   }
 
   .nav ul {
     flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    width: 100%; /* Ajout */
-    padding: 0;
+    align-items: flex-start; /* Changé de center à flex-start */
+    gap: 1rem; /* Réduit de 2rem à 1rem */
+    width: 100%; /* Change de 100% à auto */
+    padding: 0 2rem; /* Ajout d'un padding horizontal */
     margin: 0;
+    margin-top: 2rem; /* Ajoute un margin négatif pour remonter les éléments */
+    text-align: center;
   }
 
   .nav ul li {
-    width: 100%; /* Ajout */
-    text-align: center;
+    width: 100%;
+    text-align: left; /* Changé de center à left */
   }
 
   .nav ul li a {
     font-size: 1.2rem; /* Plus grand sur mobile */
-    padding: 1rem;
+    padding: 0.5rem 0; /* Réduit le padding vertical */
     display: block;
     width: 100%;
+    text-align: left; /* Ajout pour assurer l'alignement du texte */
   }
 
   .menu-toggle {
     display: flex;
-    z-index: 1000; /* Augmenté pour être au-dessus du menu */
+    z-index: 1001; /* Augmenté */
+    position: relative;
+  }
+
+  .header {
+    position: relative;
+    z-index: 1000;
   }
 
   /* Animation du menu burger */
@@ -191,14 +210,33 @@ body {
     transform: rotate(-45deg) translate(6px, -6px);
     background-color: var(--text-color);
   }
+
+  .nav ul li.cta-button a {
+    background: var(--text-color);
+    color: var(--primary-color);
+    padding: 0.3rem 0.8rem; /* Réduit le padding */
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block; /* Permet au bouton de prendre juste l'espace nécessaire */
+    width: auto; /* Annule la largeur 100% */
+  }
+}
+
+/* Main content spacing */
+main {
+  margin-top: 80px; /* Espace pour le header fixe */
 }
 
 /* Hero Section */
 .hero {
+  padding-top: 120px; /* Augmentation significative */
+  padding-bottom: 6rem;
   background: var(--primary-color);
   color: #ffffff;
-  padding: 6rem 0;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  margin-top: 20px; /* Ajout d'une marge en haut */
 }
 .hero-content h1 {
   font-size: 3.5rem;
@@ -260,11 +298,13 @@ body {
 
 /* Stats Section */
 .stats {
+  margin-top: 2rem;
   padding: 4rem 0;
   background: rgba(255, 255, 255, 0.05);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 2rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 .stats-grid {
@@ -375,4 +415,66 @@ body {
 
 .logo-img:hover {
   transform: scale(1.05);
+}
+
+/* Fix horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  /* Adjust container padding */
+  .container {
+    width: 95%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  /* Fix hero section */
+  .hero {
+    padding-top: 100px; /* Légèrement moins sur mobile */
+    padding-bottom: 4rem;
+    margin-top: 15px;
+  }
+  
+  .hero-content {
+    padding: 0 15px;
+    margin-top: 20px; /* Ajoute un peu d'espace supplémentaire */
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem; /* Reduce font size on mobile */
+    word-wrap: break-word;
+  }
+
+  /* Fix stats section */
+  .stats {
+    width: 100%;
+    margin: 2rem 0;
+    padding: 2rem 0;
+  }
+
+  .stats-grid {
+    padding: 0 15px;
+  }
+
+  /* Fix menu positioning */
+  .nav {
+    width: 100vw;
+    left: 0;
+    right: 0;
+    padding-top: 20px; /* Réduit de 80px à 20px */
+  }
+
+  .nav ul {
+    margin-top: -30px; /* Ajoute un margin négatif pour remonter les éléments */
+  }
+}
+
+/* Ensure all elements respect container width */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
 }
