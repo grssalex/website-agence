@@ -10,6 +10,7 @@ import '../../public/styles/global.css';
     <title>AGWS - Accueil</title>
 	<link rel="stylesheet" href="/website-agence/styles/global.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../scripts/carousel.js"></script>
   </head>
   <body>
     <Header />
@@ -26,6 +27,7 @@ import '../../public/styles/global.css';
     <!-- SECTION STATS -->
     <section class="stats">
       <div class="container">
+        <!-- Version desktop -->
         <div class="stats-grid">
           <div class="stat-card">
             <h3>+45</h3>
@@ -42,6 +44,34 @@ import '../../public/styles/global.css';
           <div class="stat-card">	
             <h3>24H/24</h3>
             <p>Service technique disponible 24/7</p>
+          </div>
+        </div>
+
+        <!-- Version mobile (carousel) -->
+        <div class="stats-carousel">
+          <div class="stats-track">
+            <div class="stat-card">
+              <h3>+45</h3>
+              <p>Projets réalisés en web / e-commerce, stockage & cloud</p>
+            </div>
+            <div class="stat-card">
+              <h3>+4</h3>
+              <p>Années d'expérience sous le nom de la société AGWS</p>
+            </div>
+            <div class="stat-card">
+              <h3>15</h3>
+              <p>Entreprises nous font confiance a temps pleins</p>
+            </div>
+            <div class="stat-card">	
+              <h3>24H/24</h3>
+              <p>Service technique disponible 24/7</p>
+            </div>
+          </div>
+          <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
           </div>
         </div>
       </div>
