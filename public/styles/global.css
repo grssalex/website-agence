@@ -1,0 +1,607 @@
+:root {
+  --primary-color: #131426;
+  --secondary-color: #e5e7eb;
+  --text-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: var(--primary-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0; /* Réduit de 1rem à 0.5rem */
+  min-height: 60px; /* Ajouter une hauteur minimale */
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem; /* Ajout de padding horizontal */
+  width: 95%; /* Un peu plus large */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo {
+  font-size: 1.5rem; /* Plus petit que 1.8rem */
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.2rem; /* Plus petit que 2rem */
+  align-items: center;
+}
+.nav ul li {
+  margin-left: 1rem;
+}
+.nav ul li.cta-button a {
+  background: var(--text-color);
+  color: var(--primary-color);
+  padding: 0.4rem 0.8rem; /* Augmentation légère du padding */
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-right: 0; /* Ajout d'une marge à droite */
+  white-space: nowrap; /* Empêche le texte de passer à la ligne */
+}
+.nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.nav a:hover {
+  color: #38b2ac; /* Une teinte turquoise */
+}
+.nav ul li a {
+  color: var(--text-color);
+  font-size: 0.85rem; /* Plus petit que 0.9rem */
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.2rem 0; /* Réduit de 0.5rem à 0.3rem */
+  transition: color 0.2s ease;
+  opacity: 0.9;
+}
+.nav ul li a:hover {
+  opacity: 1;
+}
+.nav ul li.cta-button a:hover {
+  background: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1000;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-color);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Base nav styles */
+.nav {
+  display: block;
+}
+
+.nav ul {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* Responsive navigation */
+@media (max-width: 1024px) {
+  .nav ul {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    position: fixed; /* Garder la position fixed même en mobile */
+    min-height: 70px; /* Augmenter légèrement en mobile */
+  }
+
+  .header-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem; /* Réduire le padding */
+    min-height: inherit; /* Hériter de la hauteur minimale */
+    display: flex;
+    align-items: center;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Changé de right à left */
+    width: 100vw; /* Utilisez 100vw au lieu de 80% */
+    height: 100vh;
+    background-color: var(--primary-color);
+    padding-top: 60px;
+    transition: 0.3s ease-in-out;
+    z-index: 99;
+    display: none;
+  }
+
+  .nav.active {
+    left: 0; /* Changé de right à left */
+    display: block; /* Changé de block à flex */
+    width: 100vw; /* Force la largeur totale */
+    max-width: none; /* Retire la largeur maximale */
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: flex-start; /* Changé de center à flex-start */
+    gap: 1rem; /* Réduit de 2rem à 1rem */
+    width: 100%; /* Change de 100% à auto */
+    padding: 0 2rem; /* Ajout d'un padding horizontal */
+    margin: 0;
+    margin-top: 2rem; /* Ajoute un margin négatif pour remonter les éléments */
+    text-align: center;
+  }
+
+  .nav ul li {
+    width: 100%;
+    text-align: left; /* Changé de center à left */
+  }
+
+  .nav ul li a {
+    font-size: 1.2rem; /* Plus grand sur mobile */
+    padding: 0.5rem 0; /* Réduit le padding vertical */
+    display: block;
+    width: 100%;
+    text-align: left; /* Ajout pour assurer l'alignement du texte */
+  }
+
+  .menu-toggle {
+    display: flex;
+    z-index: 1001; /* Augmenté */
+    position: relative;
+    margin-right: 10px; /* Ajouter une marge à droite */
+  }
+
+  .header {
+    position: relative;
+    z-index: 1000;
+  }
+
+  /* Animation du menu burger */
+  .menu-toggle.active span:first-child {
+    transform: rotate(45deg) translate(6px, 6px);
+    background-color: var(--text-color);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:last-child {
+    transform: rotate(-45deg) translate(6px, -6px);
+    background-color: var(--text-color);
+  }
+
+  .nav ul li.cta-button a {
+    background: var(--text-color);
+    color: var(--primary-color);
+    padding: 0.4rem 0.8rem; /* Padding plus petit sur mobile */
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block; /* Permet au bouton de prendre juste l'espace nécessaire */
+    width: auto; /* Annule la largeur 100% */
+    margin-right: 0; /* Retire la marge sur mobile */
+  }
+}
+
+/* Main content spacing */
+main {
+  margin-top: 80px; /* Espace pour le header fixe */
+}
+
+/* Hero Section */
+.hero {
+  padding-top: 90px; /* Augmenter le padding-top pour compenser la hauteur du header */
+  padding-bottom: 6rem;
+  background: var(--primary-color);
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  margin-top: 20px; /* Ajout d'une marge en haut */
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-content {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.hero-content p {
+  font-size: 1.2rem;  /* Taille par défaut pour mobile */
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+/* Ajoutez cette media query pour les écrans plus larges */
+@media (min-width: 768px) {
+  .hero-content p {
+    font-size: 1.8rem; /* Taille plus grande pour PC */
+    max-width: 800px; /* Limite la largeur du texte */
+    margin: 0 auto 2rem; /* Centre le texte */
+    line-height: 1.4; /* Améliore l'espacement des lignes */
+  }
+}
+
+.btn {
+  background-color: #ffffff;
+  color: #1e293b;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  display: inline-block; /* Ajout pour meilleur contrôle de la taille */
+  font-size: 1rem; /* Taille de police réduite */
+  white-space: nowrap; /* Évite le retour à la ligne du texte */
+  margin: 1rem 0; /* Ajoute de la marge verticale */
+}
+
+/* Version responsive */
+@media (max-width: 768px) {
+  .btn {
+    padding: 0.6rem 1.2rem; /* Padding réduit sur mobile */
+    font-size: 0.9rem; /* Police plus petite sur mobile */
+  }
+  
+  .hero-buttons {
+    margin-top: 1rem;
+  }
+}
+
+.btn:hover {
+  background-color: #e2e8f0;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.feature-card {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Features Section */
+.features {
+  padding: 6rem 0;  /* Augmentation du padding */
+  margin-top: -2rem; /* Pour compenser la marge de la section stats */
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem; /* Plus d'espace sous le titre */
+}
+
+/* Stats Section */
+.stats {
+  margin-top: 2rem;
+  padding: 4rem 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Stats Section - Desktop */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+
+.stat-card {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.stat-card h3 {
+  font-size: 2rem; /* Plus petit que 2.5rem */
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(90deg, #4f0599 0%, #7929e8 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.stat-card p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem; /* Plus petit que 1rem */
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Stats Carousel - Mobile */
+.stats-carousel {
+  display: none; /* Caché par défaut */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stats-grid {
+    display: none; /* Cache la grille sur mobile */
+  }
+  
+  .stats-carousel {
+    display: block; /* Affiche le carousel */
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+  }
+
+  .stats-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    width: 400%;
+  }
+
+  .stats-track .stat-card {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 2rem 1rem;
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+  }
+
+  .dot.active {
+    background: var(--text-color);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CTA Section */
+.cta {
+  padding: 6rem 0;
+  text-align: center;
+  margin-top: 2rem; /* Ajout d'une marge en haut */
+}
+
+.cta h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.cta p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* Footer */
+.footer {
+  background-color: #1e293b;
+  color: #ffffff;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+}
+.footer-nav ul li {
+  margin: 0 0.5rem;
+}
+.footer-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Add these styles */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo-img {
+  height: 35px;
+  width: auto;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* Fix horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  /* Adjust container padding */
+  .container {
+    width: 95%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  /* Fix hero section */
+  .hero {
+    padding-top: 100px; /* Légèrement moins sur mobile */
+    padding-bottom: 4rem;
+    margin-top: 15px;
+  }
+  
+  .hero-content {
+    padding: 0 15px;
+    margin-top: 20px; /* Ajoute un peu d'espace supplémentaire */
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem; /* Reduce font size on mobile */
+    word-wrap: break-word;
+  }
+
+  /* Fix stats section */
+  .stats {
+    width: 100%;
+    margin: 2rem 0;
+    padding: 2rem 0;
+  }
+
+  .stats-grid {
+    padding: 0 15px;
+  }
+
+  /* Fix menu positioning */
+  .nav {
+    width: 100vw;
+    left: 0;
+    right: 0;
+    padding-top: 20px; /* Réduit de 80px à 20px */
+  }
+
+  .nav ul {
+    margin-top: -30px; /* Ajoute un margin négatif pour remonter les éléments */
+  }
+}
+
+/* Ensure all elements respect container width */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.banner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(19, 20, 38, 0.7) 0%,
+    rgba(19, 20, 38, 0.85) 100%
+  );
+}
